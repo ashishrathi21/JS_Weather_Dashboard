@@ -81,20 +81,33 @@ function createWeatherCard(cityName, weatherCard, index) {
 
   if (index === 0) {
     return `
-        <div class="details">
-          <h2>${cityName} (${dayName})</h2>
-          <h4>Temperature : ${(weatherCard.main.temp - 273.15).toFixed(
-            2
-          )}°C</h4>
-          <h4>Wind : ${weatherCard.wind.speed} m/s</h4>
-          <h4>Humidity : ${weatherCard.main.humidity}%</h4>
-        </div>
-        <div class="icon">
-          <img src="https://openweathermap.org/img/wn/${
-            weatherCard.weather[0].icon
-          }@4x.png" alt="weather-icon">
-          <h4>${weatherCard.weather[0].description}</h4>
-        </div>`;
+     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; width: 100%;">
+    
+    <div class="details" style="flex: 1; min-width: 200px;">
+      <h2 style="margin: 0 0 8px 0;">${cityName} (${dayName})</h2>
+      <h4 style="margin: 4px 0;">Temperature: ${(weatherCard.main.temp - 273.15).toFixed(2)}°C</h4>
+      <h4 style="margin: 4px 0;">Wind: ${weatherCard.wind.speed} m/s</h4>
+      <h4 style="margin: 4px 0;">Humidity: ${weatherCard.main.humidity}%</h4>
+    </div>
+
+    <div style="display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 150px;">
+      <h4 style="font-size: 2rem; margin: 0;">${(weatherCard.main.temp - 273.15).toFixed(2)}°C</h4>
+      <h6 style="margin: 6px 0 0 0;">${weatherCard.wind.speed} m/s | ${weatherCard.main.humidity}%</h6>
+    </div>
+
+    <div class="icon" style="flex: 1; text-align: center; min-width: 150px;">
+      <img 
+        src="https://openweathermap.org/img/wn/${weatherCard.weather[0].icon}@4x.png" 
+        alt="weather-icon"
+        style="width: 100px; height: 100px; display: block; margin: 0 auto;"
+      >
+      <h4 style="margin-top: 10px; text-transform: capitalize;">
+        ${weatherCard.weather[0].description}
+      </h4>
+    </div>
+
+  </div>
+`;
   } else {
     return `
         <li class="card">
