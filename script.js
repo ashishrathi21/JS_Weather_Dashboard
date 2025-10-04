@@ -12,7 +12,7 @@ function getCityCoordinates() {
     alert("Please Enter City Name To Search");
   }
 
-  const GEO_CODING_API = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${API_KEY}`;
+  const GEO_CODING_API = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${API_KEY}`;
 
   fetch(GEO_CODING_API)
     .then((res) => res.json())
@@ -128,7 +128,7 @@ function getUserCoordinates() {
   navigator.geolocation.getCurrentPosition(
     (position) => {
       const { latitude, longitude } = position.coords;
-      const REVERSE_GEOCODING_API = `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${API_KEY}`;
+      const REVERSE_GEOCODING_API = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${API_KEY}`;
       fetch(REVERSE_GEOCODING_API)
         .then((res) => res.json())
         .then((data) => {
